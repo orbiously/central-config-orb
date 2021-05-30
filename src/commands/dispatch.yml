@@ -1,0 +1,23 @@
+parameters:
+  force-update:
+    type: boolean
+    default: false
+  skip-build-on-targets:
+    type: boolean
+    default: true
+  config-to-deploy:
+    description: Configuration file to be deployed to all targets
+    type: string
+  targets-list:
+    description: "JSON file containing the list of repo and branch targets. Each target is defined as a JSON object"
+    type: string
+
+steps:
+  - run:
+      name: Check parameters and dispatch configuration
+      environment:
+        SKIP: << parameters.skip-build-on-targets >>
+        CENTRAL: << parameters.config-to-deploy >>
+        TARGET_LIST: << parameters.targets-list >>
+        FORCE: << parameters.force-update >>
+      command: <<include(scripts/dispatch.sh)>>
