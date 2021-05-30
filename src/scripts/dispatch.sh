@@ -26,11 +26,12 @@ CheckEnv() {
 }
 
 DispatchConf() {
+  jq -c < "${TARGETS_LIST}" > COMPACT.JSON
   GLOBAL_64="$(cat ${CENTRAL} | base64 -w 0)"
 while read -r target
   do
-    REPO=$(jq -r '."target-repo"' \<<< $target)
-    BRANCH=$(jq -r '."target-branch"' \<<< $target)
+    REPO=$(echo "$target" | jq -r '."target-repo"')
+    BRANCH=$(echo "$target" | jq -r '."target-branch"')
 
     if [ $(curl -s -w '%{response_code}' --output /dev/null --location --request GET "https://api.github.com/repos/$REPO/contents/.circleci/config.yml?ref=$BRANCH" --header "Authorization: token $GH_TOKEN" --header "Accept: application/vnd.github.v3+json") != 200 ]; then
       curl -s -w '%{response_code}' -X PUT https://api.github.com/repos/$REPO/contents/.circleci/config.yml -H "Authorization: token $GH_TOKEN" -H 'Accept: application/vnd.github.v3+json' -d '{"message":"'"$MESSAGE"'","content":"'"$GLOBAL_64"'","branch":"'"$BRANCH"'"}' > /tmp/response.status
@@ -51,7 +52,7 @@ while read -r target
         printf "\nThe same version of the configuration file already exists in [branch: $BRANCH]\n"
       fi
     fi  
-  done \<<< $(jq -c < "${TARGET_LIST}")
+  done < COMPACT.JSON
 }
 
 CheckEnv
