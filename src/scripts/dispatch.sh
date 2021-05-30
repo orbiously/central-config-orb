@@ -26,7 +26,6 @@ CheckEnv() {
 }
 
 DispatchConf() {
-  touch /tmp/deployment.log
   GLOBAL_64="$(cat ${CENTRAL} | base64 -w 0)"
 while read -r target
   do
@@ -46,7 +45,7 @@ while read -r target
         curl -s -o /dev/null -w '%{response_code}' -X PUT https://api.github.com/repos/$REPO/contents/.circleci/config.yml --header "Authorization: token ${GH_TOKEN}" --header "Accept: application/vnd.github.v3+json" --data-raw '{"message":"'"$MESSAGE"'","content":"'"${GLOBAL_64}"'","sha": "'"$BLOB_SHA"'","branch":"'"$BRANCH"'"}' > /tmp/response.status
                         
         if [[ "$(cat /tmp/response.status)" = "200" ]]; then
-          printf "\n${CENTRAL} was successfully deployed to $REPO [branch: $BRANCH]\n" | tee -a /tmp/deployment.log
+          printf "\n${CENTRAL} was successfully deployed to $REPO [branch: $BRANCH]\n"
         fi
       else
         printf "\nThe same version of the configuration file already exists in [branch: $BRANCH]\n"
