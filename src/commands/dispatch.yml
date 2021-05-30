@@ -18,6 +18,6 @@ steps:
       environment:
         SKIP: << parameters.skip-build-on-targets >>
         CENTRAL: << parameters.config-to-deploy >>
-        TARGET_LIST: << parameters.targets-list >>
+        TARGETS_LIST: << parameters.targets-list >>
         FORCE: << parameters.force-update >>
       command: <<include(scripts/dispatch.sh)>>

@@ -5,7 +5,7 @@ CheckEnv() {
     exit 1
   fi
 
-  if [ ! -s ${TARGET_LIST} ]; then
+  if [ ! -s ${TARGETS_LIST} ]; then
     echo "Target file is empty. Please add at least 1 target repository"
     exit 1
   fi
