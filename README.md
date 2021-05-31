@@ -15,4 +15,4 @@ orbs:
 
 ### Available command
 
-[dispatch-config](https://github.com/orbiously/central-config-orb/edit/alpha/src/commands/README.md)
+[dispatch-config](https://github.com/orbiously/central-config-orb/blob/alpha/src/commands/README.md)
