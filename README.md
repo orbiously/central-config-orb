@@ -1,6 +1,6 @@
 # Orb Project Template
 
-[![CircleCI Build Status](https://circleci.com/gh/orbiously/central-config-orb.svg?style=shield&branch=alpha "CircleCI Build Status")](https://circleci.com/gh/orbiously/central-config-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/orbiously/central-config-orb)](https://circleci.com/orbs/registry/orb/orbiously/central-config-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/orbiously/central-config-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
+[![CircleCI Build Status](https://circleci.com/gh/orbiously/central-config-orb/tree/alpha.svg??style=shield "CircleCI Build Status")](https://circleci.com/gh/orbiously/central-config-orb) [![CircleCI Orb Version](https://badges.circleci.com/orbs/orbiously/central-config-orb)](https://circleci.com/orbs/registry/orb/orbiously/central-config-orb) [![GitHub License](https://img.shields.io/badge/license-MIT-lightgrey.svg)](https://raw.githubusercontent.com/orbiously/central-config-orb/master/LICENSE) [![CircleCI Community](https://img.shields.io/badge/community-CircleCI%20Discuss-343434.svg)](https://discuss.circleci.com/c/ecosystem/orbs)
 
 
 
