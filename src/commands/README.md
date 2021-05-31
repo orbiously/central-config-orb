@@ -1,27 +1,25 @@
 # Commands
 
-Easily add and author [Reusable Commands](https://circleci.com/docs/2.0/reusing-config/#authoring-reusable-commands) to the `src/commands` directory.
+### `dispatch-config`
 
-Each _YAML_ file within this directory will be treated as an orb command, with a name which matches its filename.
+Parameters:
 
-View the included _[greet.yml](./greet.yml)_ example.
-
-```yaml
-description: >
-  Replace this text with a description for this command.
-  # What will this command do?
-  # Descriptions should be short, simple, and clear.
-parameters:
-  greeting:
+force-update:
+    type: boolean
+    default: false
+  skip-build-on-targets:
+    type: boolean
+    default: true
+  config-to-deploy:
+    description: Configuration file to be deployed to all targets
     type: string
-    default: "Hello"
-    description: "Select a proper greeting"
-steps:
-  - run:
-      name: Hello World
-      command: echo << parameters.greeting >> world
-```
+  targets-list:
+    description: "JSON file containing the list of repo and branch targets. Each target is defined as a JSON object"
+    type: string
 
-## See:
- - [Orb Author Intro](https://circleci.com/docs/2.0/orb-author-intro/#section=configuration)
- - [How to author commands](https://circleci.com/docs/2.0/reusing-config/#authoring-reusable-commands)
+| Name | Type | Description | Default | Required |
+| ----------- | ----------- | ----------- | ----------- | ----------- |
+| force-update | boolean | Dispatch config even if the same verison is already present in target repo/branch | false | No |
+| skip-build-on-targets   | boolean | Skip build in target projects upon config push | true | No |
+| config-to-deploy   | string | Configuration file to be deployed to all targets | _no default value_ | **Yes** |
+| targets-list   | string | JSON file containing the list of repo and branch targets. Each target is defined as a JSON object | _no default value_ | **Yes** |
