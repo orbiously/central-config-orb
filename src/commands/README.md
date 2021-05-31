@@ -2,20 +2,8 @@
 
 ### `dispatch-config`
 
-Parameters:
+#### Parameters:
 
-force-update:
-    type: boolean
-    default: false
-  skip-build-on-targets:
-    type: boolean
-    default: true
-  config-to-deploy:
-    description: Configuration file to be deployed to all targets
-    type: string
-  targets-list:
-    description: "JSON file containing the list of repo and branch targets. Each target is defined as a JSON object"
-    type: string
 
 | Name | Type | Description | Default | Required |
 | ----------- | ----------- | ----------- | ----------- | ----------- |
